@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight, Flower2 } from "lucide-react";
 import { GoldOrnament } from "../GoldOrnament";
 import { FloatingParticles } from "../FloatingParticles";
+import mehndiIllustration from "@/assets/mehndi-illustration.png";
 
 interface MehndiEventProps {
   onNext: () => void;
@@ -24,21 +25,18 @@ export const MehndiEvent = ({ onNext }: MehndiEventProps) => {
       <div className="absolute inset-0 pattern-overlay opacity-20" />
       <FloatingParticles count={15} color="pink" />
 
-      {/* Decorative Mehndi Hands */}
+      {/* Mehndi Illustration - Background */}
       <motion.div
-        className="absolute top-10 left-10 opacity-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.1 }}
-        transition={{ delay: 0.5 }}
+        className="absolute bottom-0 right-0 opacity-20 pointer-events-none"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 0.2, x: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
       >
-        <svg className="w-32 h-32 text-mehndi-green" viewBox="0 0 100 100">
-          <path
-            d="M50 10 L50 50 M30 30 L70 30 M40 50 L60 50 M35 70 Q50 90 65 70"
-            stroke="currentColor"
-            strokeWidth="2"
-            fill="none"
-          />
-        </svg>
+        <img 
+          src={mehndiIllustration} 
+          alt="" 
+          className="w-64 md:w-80 h-auto"
+        />
       </motion.div>
 
       {/* Content Card */}

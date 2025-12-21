@@ -3,6 +3,7 @@ import { MapPin, Calendar, Crown, Heart } from "lucide-react";
 import { GoldOrnament } from "../GoldOrnament";
 import { FloatingParticles } from "../FloatingParticles";
 import { MandalaDecoration } from "../MandalaDecoration";
+import weddingIllustration from "@/assets/wedding-illustration.png";
 
 export const WeddingEvent = () => {
   const mapsUrl = "https://www.google.com/maps/search/?api=1&query=L.S.+Garden+Kaithal+Road+Cheeka+Haryana";
@@ -19,6 +20,20 @@ export const WeddingEvent = () => {
       {/* Background Elements */}
       <div className="absolute inset-0 pattern-overlay opacity-20" />
       <FloatingParticles count={35} color="gold" />
+
+      {/* Wedding Couple Illustration - Background */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 0.15, scale: 1 }}
+        transition={{ delay: 0.5, duration: 1.5 }}
+      >
+        <img 
+          src={weddingIllustration} 
+          alt="" 
+          className="w-[70%] max-w-[450px] h-auto object-contain"
+        />
+      </motion.div>
 
       {/* Mandala Decorations */}
       <MandalaDecoration className="absolute top-[-10%] left-[-10%]" size="lg" />

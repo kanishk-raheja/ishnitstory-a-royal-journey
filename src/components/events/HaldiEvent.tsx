@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight, Sun } from "lucide-react";
 import { GoldOrnament } from "../GoldOrnament";
 import { FloatingParticles } from "../FloatingParticles";
+import haldiIllustration from "@/assets/haldi-illustration.png";
 
 interface HaldiEventProps {
   onNext: () => void;
@@ -22,6 +23,20 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
       {/* Background Elements */}
       <div className="absolute inset-0 pattern-overlay opacity-15" />
       <FloatingParticles count={20} color="yellow" />
+
+      {/* Haldi Couple Illustration - Background */}
+      <motion.div
+        className="absolute bottom-0 right-0 opacity-25 pointer-events-none"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 0.25, y: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
+        <img 
+          src={haldiIllustration} 
+          alt="" 
+          className="w-64 md:w-80 h-auto"
+        />
+      </motion.div>
 
       {/* Sunburst Effect */}
       <motion.div
@@ -51,7 +66,7 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
 
       {/* Turmeric Splashes */}
       <motion.div
-        className="absolute top-20 right-10 w-32 h-32 bg-haldi/20 rounded-full blur-2xl"
+        className="absolute top-20 left-10 w-32 h-32 bg-haldi/20 rounded-full blur-2xl"
         animate={{
           scale: [1, 1.2, 1],
           opacity: [0.2, 0.4, 0.2],
