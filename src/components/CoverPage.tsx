@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { FloatingParticles } from "./FloatingParticles";
 import { MandalaDecoration } from "./MandalaDecoration";
 import { GoldOrnament } from "./GoldOrnament";
+import coupleSilhouette from "@/assets/couple-silhouette.png";
 
 interface CoverPageProps {
   onOpen: () => void;
@@ -30,6 +31,20 @@ export const CoverPage = ({ onOpen }: CoverPageProps) => {
 
       {/* Pattern Overlay */}
       <div className="absolute inset-0 pattern-overlay" />
+
+      {/* Couple Illustration - Background */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 0.15, scale: 1 }}
+        transition={{ delay: 0.3, duration: 1.5 }}
+      >
+        <img 
+          src={coupleSilhouette} 
+          alt="" 
+          className="w-[80%] max-w-[500px] h-auto object-contain opacity-60"
+        />
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-8">

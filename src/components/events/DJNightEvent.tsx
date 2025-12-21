@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight, Music } from "lucide-react";
 import { GoldOrnament } from "../GoldOrnament";
 import { FloatingParticles } from "../FloatingParticles";
+import djnightIllustration from "@/assets/djnight-illustration.png";
 
 interface DJNightEventProps {
   onNext: () => void;
@@ -22,6 +23,20 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
       {/* Background Elements */}
       <div className="absolute inset-0 pattern-overlay opacity-10" />
       <FloatingParticles count={25} color="gold" />
+
+      {/* DJ Night Illustration - Background */}
+      <motion.div
+        className="absolute bottom-0 left-0 opacity-30 pointer-events-none"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 0.3, x: 0 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
+        <img 
+          src={djnightIllustration} 
+          alt="" 
+          className="w-56 md:w-72 h-auto"
+        />
+      </motion.div>
 
       {/* Neon Glow Effects */}
       <motion.div
