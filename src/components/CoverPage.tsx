@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { FloatingParticles } from "./FloatingParticles";
 import { MandalaDecoration } from "./MandalaDecoration";
 import { GoldOrnament } from "./GoldOrnament";
@@ -11,8 +12,7 @@ interface CoverPageProps {
 export const CoverPage = ({ onOpen }: CoverPageProps) => {
   return (
     <motion.div
-      className="min-h-screen w-full bg-gradient-royal relative overflow-hidden flex items-center justify-center cursor-pointer"
-      onClick={onOpen}
+      className="min-h-screen w-full bg-gradient-royal relative overflow-hidden flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -106,7 +106,7 @@ export const CoverPage = ({ onOpen }: CoverPageProps) => {
           Gunit
         </motion.h1>
 
-        {/* Brand Name */}
+        {/* Brand Name - Cursive */}
         <motion.div
           className="mt-8"
           initial={{ opacity: 0, y: 20 }}
@@ -114,35 +114,42 @@ export const CoverPage = ({ onOpen }: CoverPageProps) => {
           transition={{ delay: 2, duration: 0.8 }}
         >
           <GoldOrnament className="mb-6" />
-          <p className="font-display text-gold text-2xl md:text-3xl tracking-[0.2em] italic">
+          <p className="font-script text-gold text-3xl md:text-4xl">
             IshnitStory
           </p>
         </motion.div>
 
-        {/* Tap to Enter */}
-        <motion.div
-          className="mt-12"
+        {/* Down Button - Clickable */}
+        <motion.button
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpen();
+          }}
+          className="mt-12 flex flex-col items-center cursor-pointer group"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 0.8 }}
         >
           <motion.p
-            className="font-body text-gold/60 text-sm tracking-widest uppercase"
+            className="font-body text-gold/60 text-sm tracking-widest uppercase mb-4 group-hover:text-gold transition-colors"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             Tap to Open
           </motion.p>
           <motion.div
-            className="mt-4 w-6 h-10 mx-auto border-2 border-gold/40 rounded-full flex items-start justify-center p-1"
+            className="w-12 h-12 rounded-full border-2 border-gold/40 flex items-center justify-center group-hover:border-gold group-hover:bg-gold/10 transition-all"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
             <motion.div
-              className="w-1.5 h-3 bg-gold/60 rounded-full"
-              animate={{ y: [0, 12, 0] }}
+              animate={{ y: [0, 4, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-            />
+            >
+              <ChevronDown className="w-6 h-6 text-gold/60 group-hover:text-gold transition-colors" />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </motion.button>
 
         {/* Bottom Ornament */}
         <motion.div
