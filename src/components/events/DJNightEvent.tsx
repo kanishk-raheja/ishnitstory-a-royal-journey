@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Calendar, ChevronRight, Music } from "lucide-react";
-import { GoldOrnament } from "../GoldOrnament";
-import { FloatingParticles } from "../FloatingParticles";
+import { MapPin, Calendar, ChevronRight } from "lucide-react";
 import djnightIllustration from "@/assets/djnight-illustration.png";
 
 interface DJNightEventProps {
@@ -14,56 +12,31 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
 
   return (
     <motion.div
-      className="min-h-screen w-full bg-gradient-night relative overflow-hidden flex flex-col items-center justify-center p-6"
+      className="min-h-screen w-full relative overflow-hidden flex items-center justify-center p-4 md:p-8"
+      style={{
+        background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%)"
+      }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Background Elements */}
-      <div className="absolute inset-0 pattern-overlay opacity-10" />
-      <FloatingParticles count={25} color="gold" />
-
-      {/* DJ Night Illustration - Background */}
-      <motion.div
-        className="absolute bottom-0 left-0 opacity-30 pointer-events-none"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 0.3, x: 0 }}
-        transition={{ delay: 0.5, duration: 1 }}
-      >
-        <img 
-          src={djnightIllustration} 
-          alt="" 
-          className="w-56 md:w-72 h-auto"
-        />
-      </motion.div>
-
-      {/* Neon Glow Effects */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-64 h-64 bg-night-light/20 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.3, 0.2],
+      {/* Gold/Purple glow overlay */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          background: "radial-gradient(ellipse at top right, #c9a050 0%, transparent 40%), radial-gradient(ellipse at bottom left, #8b5cf6 0%, transparent 40%)"
         }}
-        transition={{ duration: 4, repeat: Infinity }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-gold/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.1, 0.2, 0.1],
-        }}
-        transition={{ duration: 3, repeat: Infinity, delay: 1 }}
       />
 
-      {/* Music Bars Animation */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-20 opacity-20">
+      {/* Music bars background animation */}
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-10 opacity-10">
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
-            className="w-2 bg-gold rounded-full"
+            className="w-1.5 bg-gold rounded-full"
             animate={{
-              height: [20, Math.random() * 60 + 20, 20],
+              height: [15, Math.random() * 40 + 15, 15],
             }}
             transition={{
               duration: 0.5 + Math.random() * 0.5,
@@ -74,123 +47,161 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
         ))}
       </div>
 
-      {/* Content Card */}
+      {/* Main Card */}
       <motion.div
-        className="bg-night-purple/60 backdrop-blur-md rounded-3xl p-8 md:p-12 max-w-lg w-full text-center relative border border-gold/30 shadow-elegant"
+        className="relative w-full max-w-md md:max-w-lg aspect-[3/4] md:aspect-[4/5]"
         initial={{ y: 50, opacity: 0, scale: 0.95 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        {/* Glowing Border */}
-        <motion.div
-          className="absolute inset-0 rounded-3xl border-2 border-gold/20"
+        {/* Outer Gold Border with glow */}
+        <motion.div 
+          className="absolute inset-0 border-2 border-gold/70 rounded-sm"
           animate={{
             boxShadow: [
-              "0 0 20px rgba(201, 160, 80, 0.1)",
-              "0 0 40px rgba(201, 160, 80, 0.2)",
-              "0 0 20px rgba(201, 160, 80, 0.1)",
+              "0 0 20px rgba(201, 160, 80, 0.2)",
+              "0 0 40px rgba(201, 160, 80, 0.4)",
+              "0 0 20px rgba(201, 160, 80, 0.2)",
             ],
           }}
           transition={{ duration: 2, repeat: Infinity }}
         />
+        <div className="absolute inset-2 md:inset-3 border border-gold/50 rounded-sm" />
 
-        {/* Icon */}
+        {/* Inner dark background */}
+        <div 
+          className="absolute inset-4 md:inset-6 rounded-sm"
+          style={{
+            background: "linear-gradient(180deg, #1e1e32 0%, #141428 100%)"
+          }}
+        />
+
+        {/* Corner Decorative Elements - Top Left */}
         <motion.div
-          className="text-gold mb-4 relative"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+          className="absolute top-0 left-0 w-20 md:w-28 h-20 md:h-28 pointer-events-none z-10"
+          initial={{ opacity: 0, x: -20, y: -20 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
         >
-          <Music className="w-16 h-16 mx-auto" strokeWidth={1.5} />
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <path d="M10 50 Q10 10 50 10" stroke="#c9a050" strokeWidth="2" fill="none" opacity="0.6" />
+            <path d="M15 45 Q15 15 45 15" stroke="#c9a050" strokeWidth="1" fill="none" opacity="0.4" />
+            <circle cx="12" cy="12" r="4" fill="#c9a050" opacity="0.5" />
+          </svg>
+        </motion.div>
+
+        {/* Corner Decorative Elements - Top Right */}
+        <motion.div
+          className="absolute top-0 right-0 w-20 md:w-28 h-20 md:h-28 pointer-events-none z-10"
+          initial={{ opacity: 0, x: 20, y: -20 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <path d="M90 50 Q90 10 50 10" stroke="#c9a050" strokeWidth="2" fill="none" opacity="0.6" />
+            <path d="M85 45 Q85 15 55 15" stroke="#c9a050" strokeWidth="1" fill="none" opacity="0.4" />
+            <circle cx="88" cy="12" r="4" fill="#c9a050" opacity="0.5" />
+          </svg>
+        </motion.div>
+
+        {/* Corner Decorative Elements - Bottom Left */}
+        <motion.div
+          className="absolute bottom-0 left-0 w-16 md:w-24 h-16 md:h-24 pointer-events-none z-10"
+          initial={{ opacity: 0, x: -20, y: 20 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <svg viewBox="0 0 100 100" className="w-full h-full">
+            <path d="M10 50 Q10 90 50 90" stroke="#c9a050" strokeWidth="2" fill="none" opacity="0.6" />
+            <circle cx="12" cy="88" r="4" fill="#c9a050" opacity="0.5" />
+          </svg>
+        </motion.div>
+
+        {/* Content */}
+        <div className="absolute inset-6 md:inset-8 flex flex-col">
+          {/* Title - Cursive */}
+          <motion.h2
+            className="font-script text-gold text-4xl md:text-5xl lg:text-6xl text-center mt-4 md:mt-8"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+          >
+            DJ Night
+          </motion.h2>
+
+          {/* Subtitle */}
+          <motion.p
+            className="font-body text-gold/60 text-center text-sm tracking-widest uppercase mt-2"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.35 }}
+          >
+            Let's Celebrate
+          </motion.p>
+
+          {/* Event Details */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="flex-1 flex flex-col items-center justify-center text-center px-4"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
           >
-            <div className="w-20 h-20 border border-gold/20 rounded-full" />
+            <p className="font-display text-2xl md:text-3xl font-semibold text-ivory mb-2">
+              30 January 2026
+            </p>
+            <p className="font-body text-base md:text-lg text-ivory/60 mb-4">
+              7:00 p.m.
+            </p>
+            <p className="font-display text-lg md:text-xl text-ivory font-medium">
+              Triveni Garden
+            </p>
+            <p className="font-body text-sm text-ivory/50 mt-1">
+              Radaur, Yamunanagar
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6 md:mt-8">
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gold hover:bg-gold-light text-night-purple px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-gold"
+              >
+                <MapPin className="w-4 h-4" />
+                View Location
+              </a>
+              <a
+                href={calendarUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-gold text-gold hover:bg-gold/10 px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all"
+              >
+                <Calendar className="w-4 h-4" />
+                Add to Calendar
+              </a>
+            </div>
           </motion.div>
-        </motion.div>
 
-        {/* Title */}
-        <motion.h2
-          className="font-display text-4xl md:text-5xl font-bold text-gold mb-2"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          DJ Night
-        </motion.h2>
-        <motion.p
-          className="font-script text-2xl text-gold-light/70 italic"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.35 }}
-        >
-          Let's Celebrate
-        </motion.p>
-
-        <GoldOrnament className="my-6" />
-
-        {/* Date & Time */}
-        <motion.div
-          className="mb-6"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          <p className="font-display text-3xl md:text-4xl font-semibold text-ivory mb-1">
-            30 January 2026
-          </p>
-          <p className="font-body text-lg text-ivory/70">7:00 p.m.</p>
-        </motion.div>
-
-        {/* Venue */}
-        <motion.div
-          className="mb-8"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <p className="font-display text-xl text-ivory font-medium">
-            Triveni Garden
-          </p>
-          <p className="font-body text-sm text-ivory/60 mt-1">
-            Radaur, Yamunanagar
-          </p>
-        </motion.div>
-
-        {/* Action Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-3 justify-center relative z-10"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <a
-            href={mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gold hover:bg-gold-light text-night-purple px-6 py-3 rounded-full font-body font-medium flex items-center justify-center gap-2 transition-all shadow-gold"
+          {/* Couple Illustration - Bottom Right */}
+          <motion.div
+            className="absolute bottom-0 right-0 pointer-events-none"
+            initial={{ opacity: 0, x: 30, y: 30 }}
+            animate={{ opacity: 0.9, x: 0, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <MapPin className="w-5 h-5" />
-            View Location
-          </a>
-          <a
-            href={calendarUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-2 border-gold text-gold hover:bg-gold/10 px-6 py-3 rounded-full font-body font-medium flex items-center justify-center gap-2 transition-all"
-          >
-            <Calendar className="w-5 h-5" />
-            Add to Calendar
-          </a>
-        </motion.div>
+            <img 
+              src={djnightIllustration} 
+              alt="" 
+              className="w-36 md:w-48 lg:w-56 h-auto object-contain"
+            />
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Next Button */}
       <motion.button
         onClick={onNext}
-        className="mt-8 flex items-center gap-2 text-gold font-body font-semibold group bg-night-purple/80 px-6 py-3 rounded-full border border-gold/30"
+        className="absolute bottom-6 md:bottom-10 flex items-center gap-2 text-gold font-body font-semibold group bg-night-purple/90 px-6 py-3 rounded-full border border-gold/30"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
