@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight } from "lucide-react";
-import djnightIllustration from "@/assets/djnight-illustration.png";
+import { CornerMandala } from "@/components/CornerMandala";
 
 interface DJNightEventProps {
   onNext: () => void;
@@ -76,46 +76,11 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
           }}
         />
 
-        {/* Corner Decorative Elements - Top Left */}
-        <motion.div
-          className="absolute top-0 left-0 w-20 md:w-28 h-20 md:h-28 pointer-events-none z-10"
-          initial={{ opacity: 0, x: -20, y: -20 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <path d="M10 50 Q10 10 50 10" stroke="#c9a050" strokeWidth="2" fill="none" opacity="0.6" />
-            <path d="M15 45 Q15 15 45 15" stroke="#c9a050" strokeWidth="1" fill="none" opacity="0.4" />
-            <circle cx="12" cy="12" r="4" fill="#c9a050" opacity="0.5" />
-          </svg>
-        </motion.div>
-
-        {/* Corner Decorative Elements - Top Right */}
-        <motion.div
-          className="absolute top-0 right-0 w-20 md:w-28 h-20 md:h-28 pointer-events-none z-10"
-          initial={{ opacity: 0, x: 20, y: -20 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <path d="M90 50 Q90 10 50 10" stroke="#c9a050" strokeWidth="2" fill="none" opacity="0.6" />
-            <path d="M85 45 Q85 15 55 15" stroke="#c9a050" strokeWidth="1" fill="none" opacity="0.4" />
-            <circle cx="88" cy="12" r="4" fill="#c9a050" opacity="0.5" />
-          </svg>
-        </motion.div>
-
-        {/* Corner Decorative Elements - Bottom Left */}
-        <motion.div
-          className="absolute bottom-0 left-0 w-16 md:w-24 h-16 md:h-24 pointer-events-none z-10"
-          initial={{ opacity: 0, x: -20, y: 20 }}
-          animate={{ opacity: 1, x: 0, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <svg viewBox="0 0 100 100" className="w-full h-full">
-            <path d="M10 50 Q10 90 50 90" stroke="#c9a050" strokeWidth="2" fill="none" opacity="0.6" />
-            <circle cx="12" cy="88" r="4" fill="#c9a050" opacity="0.5" />
-          </svg>
-        </motion.div>
+        {/* Corner Mandala Decorations - All 4 corners */}
+        <CornerMandala position="top-left" color="#c9a050" size="lg" delay={0.4} />
+        <CornerMandala position="top-right" color="#c9a050" size="lg" delay={0.5} />
+        <CornerMandala position="bottom-left" color="#c9a050" size="md" delay={0.5} />
+        <CornerMandala position="bottom-right" color="#c9a050" size="md" delay={0.6} />
 
         {/* Content */}
         <div className="absolute inset-6 md:inset-8 flex flex-col">
@@ -180,20 +145,6 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
                 Add to Calendar
               </a>
             </div>
-          </motion.div>
-
-          {/* Couple Illustration - Bottom Right */}
-          <motion.div
-            className="absolute bottom-0 right-0 pointer-events-none"
-            initial={{ opacity: 0, x: 30, y: 30 }}
-            animate={{ opacity: 0.9, x: 0, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-          >
-            <img 
-              src={djnightIllustration} 
-              alt="" 
-              className="w-36 md:w-48 lg:w-56 h-auto object-contain"
-            />
           </motion.div>
         </div>
       </motion.div>
