@@ -42,16 +42,11 @@ export const CountdownTimer = ({ targetDate, className = "" }: CountdownTimerPro
 
   const TimeBlock = ({ value, label }: { value: number; label: string }) => (
     <div className="flex flex-col items-center">
-      <motion.div
-        className="w-14 h-14 md:w-16 md:h-16 bg-gold/20 border border-gold/40 rounded-lg flex items-center justify-center backdrop-blur-sm"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
+      <div className="w-14 h-14 md:w-16 md:h-16 bg-gold/20 border border-gold/40 rounded-lg flex items-center justify-center backdrop-blur-sm">
         <span className="font-display text-2xl md:text-3xl font-bold text-gold">
           {value.toString().padStart(2, "0")}
         </span>
-      </motion.div>
+      </div>
       <span className="font-body text-xs text-gold/70 mt-1 tracking-wider uppercase">
         {label}
       </span>

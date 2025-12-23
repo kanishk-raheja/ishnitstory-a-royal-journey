@@ -126,20 +126,27 @@ export const CoverPage = ({ onOpen }: CoverPageProps) => {
           </p>
         </motion.div>
 
-        {/* Tap to Open - Original Style */}
+        {/* Tap to Open Button */}
         <motion.div
-          className="mt-12 flex flex-col items-center"
+          className="mt-12 flex flex-col items-center gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5, duration: 0.8 }}
         >
-          <motion.p
-            className="font-body text-gold/60 text-sm tracking-widest uppercase"
-            animate={{ opacity: [0.4, 1, 0.4] }}
+          <p className="font-body text-gold/70 text-sm tracking-[0.2em] uppercase">
+            Tap to Open
+          </p>
+          <motion.div
+            className="w-10 h-16 border-2 border-gold/60 rounded-full flex items-start justify-center pt-2"
+            animate={{ opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            Tap to Open
-          </motion.p>
+            <motion.div
+              className="w-2 h-4 bg-gold/60 rounded-full"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </motion.div>
         </motion.div>
 
         {/* Bottom Ornament */}
