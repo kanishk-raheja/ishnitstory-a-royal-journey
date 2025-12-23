@@ -40,15 +40,25 @@ export const CornerMandala = ({
     "bottom-right": { x: 20, y: 20 },
   };
 
+  const rotations = {
+    "top-left": 0,
+    "top-right": 90,
+    "bottom-left": -90,
+    "bottom-right": 180,
+  };
+
   return (
     <motion.div
-      className={`absolute ${positionClasses[position]} ${sizeClasses[size]} pointer-events-none z-10`}
+      className={`absolute ${positionClasses[position]} ${sizeClasses[size]} pointer-events-none z-10 overflow-hidden`}
       initial={{ opacity: 0, ...initialPos[position] }}
       animate={{ opacity: 1, x: 0, y: 0 }}
       transition={{ delay, duration: 0.8 }}
-      style={{ transform: `rotate(${transforms[position].rotate}deg)` }}
     >
-      <svg viewBox="0 0 100 100" className="w-full h-full">
+      <svg 
+        viewBox="0 0 100 100" 
+        className="w-full h-full"
+        style={{ transform: `rotate(${rotations[position]}deg)` }}
+      >
         {/* Outer decorative arc */}
         <path
           d="M5 50 Q5 5 50 5"
