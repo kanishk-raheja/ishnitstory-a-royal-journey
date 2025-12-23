@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight } from "lucide-react";
-import { CornerMandala } from "@/components/CornerMandala";
+import { FloralCorner } from "@/components/FloralCorner";
 
 interface MehndiEventProps {
   onNext: () => void;
@@ -48,11 +48,11 @@ export const MehndiEvent = ({ onNext }: MehndiEventProps) => {
           }}
         />
 
-        {/* Corner Mandala Decorations - All 4 corners */}
-        <CornerMandala position="top-left" color="#6b7c5c" size="lg" delay={0.4} />
-        <CornerMandala position="top-right" color="#6b7c5c" size="lg" delay={0.5} />
-        <CornerMandala position="bottom-left" color="#6b7c5c" size="md" delay={0.5} />
-        <CornerMandala position="bottom-right" color="#6b7c5c" size="md" delay={0.6} />
+        {/* Corner Floral Decorations - All 4 corners */}
+        <FloralCorner position="top-left" size="lg" delay={0.4} />
+        <FloralCorner position="top-right" size="lg" delay={0.5} />
+        <FloralCorner position="bottom-left" size="lg" delay={0.5} />
+        <FloralCorner position="bottom-right" size="lg" delay={0.6} />
 
         {/* Content */}
         <div className="absolute inset-6 md:inset-8 flex flex-col">
