@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight } from "lucide-react";
-import { FloralCorner } from "@/components/FloralCorner";
+import { CornerMandala } from "@/components/CornerMandala";
 
 interface DJNightEventProps {
   onNext: () => void;
@@ -76,11 +76,11 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
           }}
         />
 
-        {/* Corner Floral Decorations - All 4 corners */}
-        <FloralCorner position="top-left" size="lg" delay={0.4} />
-        <FloralCorner position="top-right" size="lg" delay={0.5} />
-        <FloralCorner position="bottom-left" size="lg" delay={0.5} />
-        <FloralCorner position="bottom-right" size="lg" delay={0.6} />
+        {/* Corner Mandala Decorations - All 4 corners */}
+        <CornerMandala position="top-left" color="#c9a050" size="lg" delay={0.4} />
+        <CornerMandala position="top-right" color="#c9a050" size="lg" delay={0.5} />
+        <CornerMandala position="bottom-left" color="#c9a050" size="md" delay={0.5} />
+        <CornerMandala position="bottom-right" color="#c9a050" size="md" delay={0.6} />
 
         {/* Content */}
         <div className="absolute inset-6 md:inset-8 flex flex-col">
