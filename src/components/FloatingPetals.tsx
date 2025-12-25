@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 interface FloatingPetalsProps {
   count?: number;
-  color?: "marigold" | "rose" | "gold";
+  color?: "marigold" | "rose" | "gold" | "blue" | "pink";
   className?: string;
 }
 
@@ -27,8 +27,10 @@ export const FloatingPetals = ({
 
   const colorSchemes = {
     marigold: ["#f5a623", "#e8940f", "#d4820a"],
-    rose: ["#e8a0a0", "#d48080", "#c86060"],
+    rose: ["#ec4899", "#f472b6", "#db2777"],
     gold: ["#c9a050", "#e0c080", "#d4a634"],
+    blue: ["#3b82f6", "#60a5fa", "#1d4ed8"],
+    pink: ["#ec4899", "#f472b6", "#fbcfe8"],
   };
 
   const colors = colorSchemes[color];

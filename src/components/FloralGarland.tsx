@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 interface FloralGarlandProps {
   variant?: "top" | "bottom";
-  color?: "green" | "gold" | "yellow" | "pink";
+  color?: "green" | "gold" | "yellow" | "pink" | "blue";
 }
 
 export const FloralGarland = ({ variant = "top", color = "green" }: FloralGarlandProps) => {
@@ -10,7 +10,8 @@ export const FloralGarland = ({ variant = "top", color = "green" }: FloralGarlan
     green: { primary: "#6b7c5c", secondary: "#8fa07a", accent: "#d4a634" },
     gold: { primary: "#c9a050", secondary: "#e0c080", accent: "#8b5cf6" },
     yellow: { primary: "#d4a634", secondary: "#f5c542", accent: "#e6b832" },
-    pink: { primary: "#d4a634", secondary: "#f5c542", accent: "#e8a090" },
+    pink: { primary: "#ec4899", secondary: "#f472b6", accent: "#c9a050" },
+    blue: { primary: "#3b82f6", secondary: "#60a5fa", accent: "#c9a050" },
   };
 
   const scheme = colorSchemes[color];

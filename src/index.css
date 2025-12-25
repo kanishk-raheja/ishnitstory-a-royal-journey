@@ -64,6 +64,18 @@
     
     --mehndi-green: 120 40% 35%;
     --mehndi-peach: 20 80% 85%;
+    
+    /* Blue theme for Mehndi */
+    --mehndi-blue: 210 70% 45%;
+    --mehndi-blue-light: 210 60% 60%;
+    --mehndi-blue-dark: 210 80% 30%;
+    --mehndi-blue-accent: 45 90% 55%;
+    
+    /* Pink theme for Haldi */
+    --haldi-pink: 340 70% 55%;
+    --haldi-pink-light: 340 60% 75%;
+    --haldi-pink-dark: 340 80% 40%;
+    --haldi-rose: 350 60% 70%;
 
     /* Gradients */
     --gradient-royal: linear-gradient(135deg, hsl(var(--royal-maroon)) 0%, hsl(var(--royal-maroon-dark)) 100%);
