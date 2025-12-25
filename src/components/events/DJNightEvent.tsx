@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight } from "lucide-react";
 import { CornerMandala } from "@/components/CornerMandala";
+import { FloralGarland } from "@/components/FloralGarland";
+import { FestiveCouple } from "@/components/FestiveCouple";
+import { OrnamentalDivider } from "@/components/OrnamentalDivider";
+import { FloatingPetals } from "@/components/FloatingPetals";
 
 interface DJNightEventProps {
   onNext: () => void;
@@ -21,16 +25,19 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Gold/Purple glow overlay */}
+      {/* Layered glows for depth */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at top right, #c9a050 0%, transparent 40%), radial-gradient(ellipse at bottom left, #8b5cf6 0%, transparent 40%)"
+          background: "radial-gradient(ellipse at 20% 30%, rgba(201, 160, 80, 0.25) 0%, transparent 40%), radial-gradient(ellipse at 80% 70%, rgba(139, 92, 246, 0.25) 0%, transparent 40%), radial-gradient(ellipse at center, rgba(201, 160, 80, 0.1) 0%, transparent 60%)"
         }}
       />
 
+      {/* Floating gold particles */}
+      <FloatingPetals count={10} color="gold" />
+
       {/* Music bars background animation */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-10 opacity-10">
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-10 opacity-15">
         {Array.from({ length: 20 }).map((_, i) => (
           <motion.div
             key={i}
@@ -68,13 +75,23 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
         />
         <div className="absolute inset-2 md:inset-3 border border-gold/50 rounded-sm" />
 
-        {/* Inner dark background */}
+        {/* Inner dark background with radial glow */}
         <div 
-          className="absolute inset-4 md:inset-6 rounded-sm"
+          className="absolute inset-4 md:inset-6 rounded-sm overflow-hidden"
           style={{
             background: "linear-gradient(180deg, #1e1e32 0%, #141428 100%)"
           }}
-        />
+        >
+          <div 
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse at center 50%, rgba(201, 160, 80, 0.15) 0%, transparent 60%)"
+            }}
+          />
+        </div>
+
+        {/* Floral Garland at top */}
+        <FloralGarland variant="top" color="gold" />
 
         {/* Corner Mandala Decorations - All 4 corners */}
         <CornerMandala position="top-left" color="#c9a050" size="lg" delay={0.4} />
@@ -84,67 +101,97 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
 
         {/* Content */}
         <div className="absolute inset-6 md:inset-8 flex flex-col">
-          {/* Title - Cursive */}
-          <motion.h2
-            className="font-script text-gold text-4xl md:text-5xl lg:text-6xl text-center mt-4 md:mt-8"
+          {/* Title - Ceremonial styling */}
+          <motion.div
+            className="text-center mt-8 md:mt-12"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            DJ Night
-          </motion.h2>
+            <motion.h2
+              className="font-script text-gold text-4xl md:text-5xl lg:text-6xl"
+              style={{
+                textShadow: "0 2px 20px rgba(201, 160, 80, 0.4)"
+              }}
+            >
+              DJ Night
+            </motion.h2>
+            <OrnamentalDivider color="#c9a050" className="mt-2" />
+            <motion.p
+              className="font-body text-gold/60 text-sm tracking-widest uppercase mt-2"
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.45 }}
+            >
+              Let's Celebrate
+            </motion.p>
+          </motion.div>
 
-          {/* Subtitle */}
-          <motion.p
-            className="font-body text-gold/60 text-center text-sm tracking-widest uppercase mt-2"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.35 }}
-          >
-            Let's Celebrate
-          </motion.p>
-
-          {/* Event Details */}
+          {/* Festive Couple Illustration */}
           <motion.div
-            className="flex-1 flex flex-col items-center justify-center text-center px-4"
+            className="flex-1 flex flex-col items-center justify-center"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <p className="font-display text-2xl md:text-3xl font-semibold text-ivory mb-2">
-              30 January 2026
-            </p>
-            <p className="font-body text-base md:text-lg text-ivory/60 mb-4">
-              7:00 p.m.
-            </p>
-            <p className="font-display text-lg md:text-xl text-ivory font-medium">
-              Triveni Garden
-            </p>
-            <p className="font-body text-sm text-ivory/50 mt-1">
-              Radaur, Yamunanagar
-            </p>
+            <FestiveCouple variant="night" className="w-28 h-32 md:w-36 md:h-40 mb-4" />
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6 md:mt-8">
-              <a
-                href={mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gold hover:bg-gold-light text-night-purple px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-gold"
-              >
-                <MapPin className="w-4 h-4" />
-                View Location
-              </a>
-              <a
-                href={calendarUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-gold text-gold hover:bg-gold/10 px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all"
-              >
-                <Calendar className="w-4 h-4" />
-                Add to Calendar
-              </a>
+            {/* Event Details */}
+            <div className="text-center px-4">
+              <p className="font-display text-2xl md:text-3xl font-semibold text-ivory mb-1">
+                30 January 2026
+              </p>
+              <p className="font-body text-base md:text-lg text-ivory/60 mb-3">
+                7:00 p.m.
+              </p>
+              <p className="font-display text-lg md:text-xl text-ivory font-medium">
+                Triveni Garden
+              </p>
+              <p className="font-body text-sm text-ivory/50 mt-1">
+                Radaur, Yamunanagar
+              </p>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-5 md:mt-6">
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gold hover:bg-gold-light text-night-purple px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-gold"
+                >
+                  <MapPin className="w-4 h-4" />
+                  View Location
+                </a>
+                <a
+                  href={calendarUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border-2 border-gold text-gold hover:bg-gold/10 px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all"
+                >
+                  <Calendar className="w-4 h-4" />
+                  Add to Calendar
+                </a>
+              </div>
             </div>
+          </motion.div>
+
+          {/* Footer decorative motif */}
+          <motion.div
+            className="flex justify-center pb-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.9 }}
+          >
+            <svg width="80" height="20" viewBox="0 0 80 20">
+              <path
+                d="M0 10 Q20 0 40 10 Q60 20 80 10"
+                fill="none"
+                stroke="#c9a050"
+                strokeWidth="1"
+                opacity="0.5"
+              />
+              <circle cx="40" cy="10" r="3" fill="#8b5cf6" opacity="0.7" />
+            </svg>
           </motion.div>
         </div>
       </motion.div>
