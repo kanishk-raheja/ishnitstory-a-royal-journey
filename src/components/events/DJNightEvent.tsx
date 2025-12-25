@@ -25,30 +25,64 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Layered glows for depth */}
+      {/* Multi-layered glows for disco effect */}
       <div 
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 20% 30%, rgba(201, 160, 80, 0.25) 0%, transparent 40%), radial-gradient(ellipse at 80% 70%, rgba(139, 92, 246, 0.25) 0%, transparent 40%), radial-gradient(ellipse at center, rgba(201, 160, 80, 0.1) 0%, transparent 60%)"
+          background: "radial-gradient(ellipse at 20% 30%, rgba(201, 160, 80, 0.3) 0%, transparent 40%), radial-gradient(ellipse at 80% 70%, rgba(139, 92, 246, 0.3) 0%, transparent 40%), radial-gradient(ellipse at 50% 50%, rgba(201, 160, 80, 0.15) 0%, transparent 60%)"
         }}
       />
 
+      {/* Animated disco light beams */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+          background: "conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(139, 92, 246, 0.3) 30deg, transparent 60deg, rgba(201, 160, 80, 0.3) 120deg, transparent 150deg, rgba(236, 72, 153, 0.2) 210deg, transparent 240deg, rgba(59, 130, 246, 0.2) 300deg, transparent 330deg)",
+        }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+      />
+
       {/* Floating gold particles */}
-      <FloatingPetals count={10} color="gold" />
+      <FloatingPetals count={15} color="gold" />
+
+      {/* Sparkle stars */}
+      {Array.from({ length: 20 }).map((_, i) => (
+        <motion.div
+          key={`star-${i}`}
+          className="absolute w-1 h-1 bg-gold rounded-full"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0, 1, 0],
+          }}
+          transition={{
+            duration: 2 + Math.random() * 2,
+            repeat: Infinity,
+            delay: Math.random() * 3,
+          }}
+        />
+      ))}
 
       {/* Music bars background animation */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-10 opacity-15">
-        {Array.from({ length: 20 }).map((_, i) => (
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-1 pb-10 opacity-20">
+        {Array.from({ length: 30 }).map((_, i) => (
           <motion.div
             key={i}
-            className="w-1.5 bg-gold rounded-full"
+            className="w-1.5 rounded-full"
+            style={{
+              background: i % 3 === 0 ? "#c9a050" : i % 3 === 1 ? "#8b5cf6" : "#ec4899"
+            }}
             animate={{
-              height: [15, Math.random() * 40 + 15, 15],
+              height: [15, Math.random() * 50 + 20, 15],
             }}
             transition={{
-              duration: 0.5 + Math.random() * 0.5,
+              duration: 0.4 + Math.random() * 0.4,
               repeat: Infinity,
-              delay: i * 0.1,
+              delay: i * 0.05,
             }}
           />
         ))}
@@ -61,14 +95,31 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
         animate={{ y: 0, opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
+        {/* Animated pulsing border glow */}
+        <motion.div 
+          className="absolute -inset-1 rounded-sm"
+          style={{
+            background: "linear-gradient(135deg, rgba(201, 160, 80, 0.5), rgba(139, 92, 246, 0.5), rgba(201, 160, 80, 0.5))",
+          }}
+          animate={{
+            opacity: [0.5, 0.8, 0.5],
+            boxShadow: [
+              "0 0 30px rgba(201, 160, 80, 0.3)",
+              "0 0 60px rgba(201, 160, 80, 0.5)",
+              "0 0 30px rgba(201, 160, 80, 0.3)",
+            ],
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+
         {/* Outer Gold Border with glow */}
         <motion.div 
           className="absolute inset-0 border-2 border-gold/70 rounded-sm"
           animate={{
             boxShadow: [
-              "0 0 20px rgba(201, 160, 80, 0.2)",
-              "0 0 40px rgba(201, 160, 80, 0.4)",
-              "0 0 20px rgba(201, 160, 80, 0.2)",
+              "0 0 20px rgba(201, 160, 80, 0.2), inset 0 0 20px rgba(201, 160, 80, 0.1)",
+              "0 0 40px rgba(201, 160, 80, 0.4), inset 0 0 40px rgba(201, 160, 80, 0.2)",
+              "0 0 20px rgba(201, 160, 80, 0.2), inset 0 0 20px rgba(201, 160, 80, 0.1)",
             ],
           }}
           transition={{ duration: 2, repeat: Infinity }}
@@ -85,15 +136,24 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
           <div 
             className="absolute inset-0"
             style={{
-              background: "radial-gradient(ellipse at center 50%, rgba(201, 160, 80, 0.15) 0%, transparent 60%)"
+              background: "radial-gradient(ellipse at center 50%, rgba(201, 160, 80, 0.2) 0%, transparent 60%)"
             }}
+          />
+          {/* Secondary purple glow */}
+          <motion.div 
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse at 30% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)"
+            }}
+            animate={{ opacity: [0.5, 0.8, 0.5] }}
+            transition={{ duration: 3, repeat: Infinity }}
           />
         </div>
 
         {/* Floral Garland at top */}
         <FloralGarland variant="top" color="gold" />
 
-        {/* Corner Mandala Decorations - All 4 corners */}
+        {/* Corner Mandala Decorations - All 4 corners with animation */}
         <CornerMandala position="top-left" color="#c9a050" size="lg" delay={0.4} />
         <CornerMandala position="top-right" color="#c9a050" size="lg" delay={0.5} />
         <CornerMandala position="bottom-left" color="#c9a050" size="md" delay={0.5} />
@@ -101,7 +161,7 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
 
         {/* Content */}
         <div className="absolute inset-6 md:inset-8 flex flex-col">
-          {/* Title - Ceremonial styling */}
+          {/* Title - Ceremonial styling with glow */}
           <motion.div
             className="text-center mt-8 md:mt-12"
             initial={{ y: 20, opacity: 0 }}
@@ -111,14 +171,22 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
             <motion.h2
               className="font-script text-gold text-4xl md:text-5xl lg:text-6xl"
               style={{
-                textShadow: "0 2px 20px rgba(201, 160, 80, 0.4)"
+                textShadow: "0 0 30px rgba(201, 160, 80, 0.5), 0 2px 20px rgba(201, 160, 80, 0.4)"
               }}
+              animate={{
+                textShadow: [
+                  "0 0 30px rgba(201, 160, 80, 0.5), 0 2px 20px rgba(201, 160, 80, 0.4)",
+                  "0 0 50px rgba(201, 160, 80, 0.7), 0 2px 30px rgba(201, 160, 80, 0.5)",
+                  "0 0 30px rgba(201, 160, 80, 0.5), 0 2px 20px rgba(201, 160, 80, 0.4)",
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
               DJ Night
             </motion.h2>
             <OrnamentalDivider color="#c9a050" className="mt-2" />
             <motion.p
-              className="font-body text-gold/60 text-sm tracking-widest uppercase mt-2"
+              className="font-body text-gold/70 text-sm tracking-widest uppercase mt-2"
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.45 }}
@@ -134,7 +202,7 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <FestiveCouple variant="night" className="w-28 h-32 md:w-36 md:h-40 mb-4" />
+            <FestiveCouple variant="night" className="w-32 h-36 md:w-40 md:h-44 mb-4" />
 
             {/* Event Details */}
             <div className="text-center px-4">
@@ -153,44 +221,85 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center mt-5 md:mt-6">
-                <a
+                <motion.a
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gold hover:bg-gold-light text-night-purple px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all shadow-gold"
+                  className="bg-gradient-to-r from-gold to-gold-light text-night-purple px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 30px rgba(201, 160, 80, 0.5)"
+                  }}
                 >
                   <MapPin className="w-4 h-4" />
                   View Location
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href={calendarUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border-2 border-gold text-gold hover:bg-gold/10 px-5 py-2.5 rounded-full font-body text-sm font-medium flex items-center justify-center gap-2 transition-all"
+                  whileHover={{ scale: 1.05 }}
                 >
                   <Calendar className="w-4 h-4" />
                   Add to Calendar
-                </a>
+                </motion.a>
               </div>
             </div>
           </motion.div>
 
-          {/* Footer decorative motif */}
+          {/* Footer decorative motif with music notes */}
           <motion.div
             className="flex justify-center pb-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
           >
-            <svg width="80" height="20" viewBox="0 0 80 20">
-              <path
-                d="M0 10 Q20 0 40 10 Q60 20 80 10"
+            <svg width="120" height="28" viewBox="0 0 120 28">
+              <motion.path
+                d="M0 14 Q30 4 60 14 Q90 24 120 14"
                 fill="none"
                 stroke="#c9a050"
                 strokeWidth="1"
                 opacity="0.5"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
               />
-              <circle cx="40" cy="10" r="3" fill="#8b5cf6" opacity="0.7" />
+              {/* Music note symbols */}
+              <motion.text
+                x="30"
+                y="10"
+                fill="#8b5cf6"
+                fontSize="12"
+                opacity="0.7"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                transition={{ delay: 1.4 }}
+              >
+                ♪
+              </motion.text>
+              <motion.circle 
+                cx="60" 
+                cy="14" 
+                r="4" 
+                fill="#c9a050"
+                initial={{ scale: 0 }}
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ delay: 1.4, duration: 2, repeat: Infinity }}
+              />
+              <motion.text
+                x="85"
+                y="22"
+                fill="#8b5cf6"
+                fontSize="12"
+                opacity="0.7"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                transition={{ delay: 1.5 }}
+              >
+                ♫
+              </motion.text>
             </svg>
           </motion.div>
         </div>
@@ -203,7 +312,10 @@ export const DJNightEvent = ({ onNext }: DJNightEventProps) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ 
+          scale: 1.05,
+          boxShadow: "0 0 30px rgba(201, 160, 80, 0.3)"
+        }}
         whileTap={{ scale: 0.95 }}
       >
         <span>Haldi Ceremony</span>

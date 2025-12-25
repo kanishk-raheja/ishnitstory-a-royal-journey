@@ -73,10 +73,17 @@ export default {
         haldi: {
           DEFAULT: "hsl(var(--haldi-yellow))",
           light: "hsl(var(--haldi-yellow-light))",
+          pink: "hsl(var(--haldi-pink))",
+          "pink-light": "hsl(var(--haldi-pink-light))",
+          "pink-dark": "hsl(var(--haldi-pink-dark))",
+          rose: "hsl(var(--haldi-rose))",
         },
         mehndi: {
           green: "hsl(var(--mehndi-green))",
           peach: "hsl(var(--mehndi-peach))",
+          blue: "hsl(var(--mehndi-blue))",
+          "blue-light": "hsl(var(--mehndi-blue-light))",
+          "blue-dark": "hsl(var(--mehndi-blue-dark))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
