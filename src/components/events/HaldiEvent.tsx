@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight } from "lucide-react";
 import { CornerMandala } from "@/components/CornerMandala";
 import { FloralGarland } from "@/components/FloralGarland";
-import { FestiveCouple } from "@/components/FestiveCouple";
 import { OrnamentalDivider } from "@/components/OrnamentalDivider";
 import { FloatingPetals } from "@/components/FloatingPetals";
 
@@ -25,62 +24,16 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6 }}
     >
-      {/* Multi-layered pink glows for depth */}
+      {/* Refined layered glows for subtle depth */}
       <div 
         className="absolute inset-0"
         style={{
-          background: "radial-gradient(ellipse at 30% 20%, rgba(236, 72, 153, 0.2) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(219, 39, 119, 0.15) 0%, transparent 50%), radial-gradient(ellipse at center, rgba(249, 168, 212, 0.15) 0%, transparent 60%)"
+          background: "radial-gradient(ellipse at 50% 40%, rgba(249, 168, 212, 0.2) 0%, transparent 55%), radial-gradient(ellipse at 30% 70%, rgba(236, 72, 153, 0.08) 0%, transparent 40%)"
         }}
       />
 
-      {/* Shimmer overlay */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "linear-gradient(45deg, transparent 30%, rgba(251, 207, 232, 0.3) 50%, transparent 70%)",
-        }}
-        animate={{
-          backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-      />
-
-      {/* Floating rose petals */}
-      <FloatingPetals count={15} color="rose" />
-
-      {/* Decorative hearts pattern */}
-      <div 
-        className="absolute inset-0 opacity-5 pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 10 C15 5, 5 5, 5 15 C5 25, 20 35, 20 35 C20 35, 35 25, 35 15 C35 5, 25 5, 20 10' fill='%23ec4899' fill-opacity='0.3'/%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* Sunburst effect - Pink themed */}
-      <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 pointer-events-none"
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.15, scale: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-      >
-        <svg className="w-[500px] h-[500px]" viewBox="0 0 200 200">
-          {Array.from({ length: 16 }).map((_, i) => (
-            <motion.line
-              key={i}
-              x1="100"
-              y1="100"
-              x2="100"
-              y2="0"
-              stroke="#ec4899"
-              strokeWidth="0.5"
-              transform={`rotate(${i * 22.5} 100 100)`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0.3, 0.5, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity, delay: i * 0.1 }}
-            />
-          ))}
-        </svg>
-      </motion.div>
+      {/* Reduced floating petals - fewer for less noise */}
+      <FloatingPetals count={8} color="rose" />
 
       {/* Main Card */}
       <motion.div
@@ -89,23 +42,21 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
         animate={{ y: 0, opacity: 1, scale: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        {/* Animated outer glow */}
+        {/* Soft outer glow */}
         <motion.div
           className="absolute -inset-1 rounded-sm"
           style={{
-            background: "linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(201, 160, 80, 0.3), rgba(219, 39, 119, 0.3))",
+            background: "linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(201, 160, 80, 0.2), rgba(219, 39, 119, 0.2))",
           }}
-          animate={{
-            opacity: [0.5, 0.8, 0.5],
-          }}
-          transition={{ duration: 3, repeat: Infinity }}
+          animate={{ opacity: [0.4, 0.6, 0.4] }}
+          transition={{ duration: 4, repeat: Infinity }}
         />
 
         {/* Outer Border */}
         <div className="absolute inset-0 border-2 border-gold/60 rounded-sm bg-gradient-to-br from-pink-50 to-pink-100" />
-        <div className="absolute inset-2 md:inset-3 border border-haldi-pink/40 rounded-sm" />
+        <div className="absolute inset-2 md:inset-3 border border-haldi-pink/30 rounded-sm" />
 
-        {/* Inner background with pink glow */}
+        {/* Inner background with subtle radial glow */}
         <div 
           className="absolute inset-4 md:inset-6 rounded-sm overflow-hidden"
           style={{
@@ -115,7 +66,7 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
           <div 
             className="absolute inset-0"
             style={{
-              background: "radial-gradient(ellipse at center 55%, rgba(236, 72, 153, 0.12) 0%, transparent 60%)"
+              background: "radial-gradient(ellipse at center 60%, rgba(249, 168, 212, 0.15) 0%, transparent 50%)"
             }}
           />
         </div>
@@ -133,7 +84,7 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
         <div className="absolute inset-6 md:inset-8 flex flex-col">
           {/* Title - Ceremonial styling */}
           <motion.div
-            className="text-center mt-8 md:mt-12"
+            className="text-center mt-6 md:mt-10"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -142,7 +93,7 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
               className="font-script text-4xl md:text-5xl lg:text-6xl"
               style={{
                 color: "#be185d",
-                textShadow: "0 2px 15px rgba(236, 72, 153, 0.3)"
+                textShadow: "0 2px 12px rgba(236, 72, 153, 0.25)"
               }}
             >
               Haldi Ceremony
@@ -150,14 +101,333 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
             <OrnamentalDivider color="#ec4899" className="mt-2" />
           </motion.div>
 
-          {/* Festive Couple Illustration */}
+          {/* Enhanced Haldi Bride Illustration with grounding */}
           <motion.div
             className="flex-1 flex flex-col items-center justify-center"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <FestiveCouple variant="haldi" className="w-32 h-36 md:w-40 md:h-44 mb-4" />
+            {/* Illustration Container */}
+            <div className="relative w-36 h-44 md:w-44 md:h-52 mb-3">
+              {/* Soft glow behind illustration */}
+              <motion.div
+                className="absolute inset-0 blur-2xl"
+                style={{
+                  background: "radial-gradient(ellipse, rgba(249, 168, 212, 0.4) 0%, transparent 70%)"
+                }}
+                animate={{ opacity: [0.5, 0.7, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              
+              {/* Enhanced Haldi Bride SVG */}
+              <svg viewBox="0 0 120 150" className="w-full h-full relative z-10" fill="none">
+                {/* Bride silhouette with detailed lehenga */}
+                <g>
+                  {/* Hair bun with gajra flowers */}
+                  <motion.ellipse
+                    cx="60"
+                    cy="18"
+                    rx="12"
+                    ry="9"
+                    fill="#db2777"
+                    initial={{ y: -10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.55 }}
+                  />
+                  {/* Gajra flowers in hair - more detailed */}
+                  {[0, 1, 2, 3, 4].map((i) => (
+                    <motion.circle
+                      key={`gajra-${i}`}
+                      cx={48 + i * 6}
+                      cy={12}
+                      r={2.5}
+                      fill="#fef3c7"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.9 + i * 0.08, type: "spring" }}
+                    />
+                  ))}
+                  
+                  {/* Head */}
+                  <motion.ellipse
+                    cx="60"
+                    cy="30"
+                    rx="13"
+                    ry="15"
+                    fill="#ec4899"
+                    initial={{ y: -10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                  />
+                  
+                  {/* Maang tikka chain */}
+                  <motion.path
+                    d="M50 18 Q60 14 70 18"
+                    fill="none"
+                    stroke="#fbbf24"
+                    strokeWidth="1.2"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 0.85 }}
+                  />
+                  {/* Maang tikka pendant */}
+                  <motion.circle
+                    cx="60"
+                    cy="17"
+                    r="3"
+                    fill="#fbbf24"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.9 }}
+                  />
+                  <motion.circle
+                    cx="60"
+                    cy="17"
+                    r="1.5"
+                    fill="#fef3c7"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.95 }}
+                  />
+                  
+                  {/* Jhumka earrings - more elaborate */}
+                  {[46, 74].map((x, i) => (
+                    <motion.g key={`earring-${i}`}>
+                      <motion.circle
+                        cx={x}
+                        cy={33}
+                        r={2.5}
+                        fill="#fbbf24"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 1 + i * 0.1 }}
+                      />
+                      <motion.ellipse
+                        cx={x}
+                        cy={38}
+                        rx={3}
+                        ry={4}
+                        fill="#fbbf24"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 1.1 + i * 0.1 }}
+                      />
+                      <motion.circle
+                        cx={x}
+                        cy={43}
+                        r={1.5}
+                        fill="#fef3c7"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 1.15 + i * 0.1 }}
+                      />
+                    </motion.g>
+                  ))}
+                  
+                  {/* Necklace - layered */}
+                  <motion.path
+                    d="M48 48 Q60 56 72 48"
+                    fill="none"
+                    stroke="#fbbf24"
+                    strokeWidth="2.5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 0.95 }}
+                  />
+                  <motion.path
+                    d="M50 51 Q60 58 70 51"
+                    fill="none"
+                    stroke="#c9a050"
+                    strokeWidth="1.5"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 1 }}
+                  />
+                  
+                  {/* Dupatta flowing elegantly */}
+                  <motion.path
+                    d="M42 42 Q28 55 22 85 Q18 115 25 145 L70 150 Q72 115 68 85 Q65 58 58 45 Z"
+                    fill="#fbcfe8"
+                    opacity="0.7"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 0.7 }}
+                    transition={{ delay: 0.7, duration: 0.8 }}
+                  />
+                  {/* Dupatta gold border */}
+                  <motion.path
+                    d="M22 85 Q18 115 25 145"
+                    fill="none"
+                    stroke="#c9a050"
+                    strokeWidth="2"
+                    opacity="0.8"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 1.2 }}
+                  />
+                  
+                  {/* Blouse with embroidery */}
+                  <motion.path
+                    d="M45 45 Q42 55 44 65 L76 65 Q78 55 75 45 Z"
+                    fill="#ec4899"
+                    initial={{ y: -5, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.65 }}
+                  />
+                  {/* Blouse embroidery detail */}
+                  <motion.path
+                    d="M52 50 Q60 48 68 50"
+                    stroke="#c9a050"
+                    strokeWidth="1"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 1.1 }}
+                  />
+                  
+                  {/* Lehenga with beautiful flare */}
+                  <motion.path
+                    d="M40 65 Q25 100 15 145 L105 145 Q95 100 80 65 Z"
+                    fill="#ec4899"
+                    initial={{ scaleY: 0, originY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ delay: 0.7, duration: 0.6 }}
+                  />
+                  {/* Lehenga embroidery layers */}
+                  <motion.path
+                    d="M20 130 Q60 122 100 130"
+                    stroke="#c9a050"
+                    strokeWidth="2.5"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 1.1, duration: 0.5 }}
+                  />
+                  <motion.path
+                    d="M18 140 Q60 134 102 140"
+                    stroke="#fbbf24"
+                    strokeWidth="2"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 1.2, duration: 0.5 }}
+                  />
+                  {/* Lehenga pattern - elegant motifs */}
+                  {[30, 45, 60, 75, 90].map((x, i) => (
+                    <motion.circle
+                      key={`motif-${i}`}
+                      cx={x}
+                      cy={115 + (i % 2) * 6}
+                      r={2}
+                      fill="#c9a050"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 1.3 + i * 0.05 }}
+                    />
+                  ))}
+                  
+                  {/* Arm with henna and bangles */}
+                  <motion.path
+                    d="M44 50 Q30 62 34 82"
+                    stroke="#ec4899"
+                    strokeWidth="7"
+                    strokeLinecap="round"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 0.8 }}
+                  />
+                  {/* Bangles - pink and gold */}
+                  {[68, 74, 80].map((y, i) => (
+                    <motion.circle
+                      key={`bangle-${i}`}
+                      cx="34"
+                      cy={y}
+                      r={3}
+                      fill={i % 2 === 0 ? "#fbbf24" : "#f472b6"}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 1 + i * 0.1 }}
+                    />
+                  ))}
+                  
+                  {/* Other arm */}
+                  <motion.path
+                    d="M76 50 Q90 62 86 82"
+                    stroke="#ec4899"
+                    strokeWidth="7"
+                    strokeLinecap="round"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ delay: 0.85 }}
+                  />
+                  {/* Bangles on right */}
+                  {[68, 74, 80].map((y, i) => (
+                    <motion.circle
+                      key={`bangle-r-${i}`}
+                      cx="86"
+                      cy={y}
+                      r={3}
+                      fill={i % 2 === 0 ? "#f472b6" : "#fbbf24"}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 1.05 + i * 0.1 }}
+                    />
+                  ))}
+                </g>
+                
+                {/* Minimal sparkles - reduced */}
+                {[
+                  { x: 30, y: 25, delay: 1.8 },
+                  { x: 95, y: 30, delay: 2.2 },
+                ].map((sparkle, i) => (
+                  <motion.circle
+                    key={`sparkle-${i}`}
+                    cx={sparkle.x}
+                    cy={sparkle.y}
+                    r={1.5}
+                    fill="#fbbf24"
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: [0, 0.8, 0], scale: [0, 1, 0] }}
+                    transition={{ delay: sparkle.delay, duration: 3, repeat: Infinity }}
+                  />
+                ))}
+              </svg>
+              
+              {/* Grounding base - soft oval glow / floral shadow */}
+              <motion.div
+                className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-28 md:w-36 h-6"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.8 }}
+              >
+                <svg viewBox="0 0 120 20" className="w-full h-full">
+                  {/* Soft shadow ellipse */}
+                  <ellipse
+                    cx="60"
+                    cy="10"
+                    rx="55"
+                    ry="8"
+                    fill="url(#groundGradient)"
+                  />
+                  {/* Decorative floral motif on ground */}
+                  <path
+                    d="M40 10 Q50 6 60 10 Q70 6 80 10"
+                    fill="none"
+                    stroke="#c9a050"
+                    strokeWidth="0.8"
+                    opacity="0.5"
+                  />
+                  <defs>
+                    <radialGradient id="groundGradient" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#f9a8d4" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#f9a8d4" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+                </svg>
+              </motion.div>
+            </div>
 
             {/* Event Details */}
             <div className="text-center px-4">
@@ -195,49 +465,32 @@ export const HaldiEvent = ({ onNext }: HaldiEventProps) => {
             </div>
           </motion.div>
 
-          {/* Footer decorative motif */}
+          {/* Footer decorative motif - refined */}
           <motion.div
             className="flex justify-center pb-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
           >
-            <svg width="100" height="24" viewBox="0 0 100 24">
+            <svg width="100" height="20" viewBox="0 0 100 20">
               <motion.path
-                d="M0 12 Q25 2 50 12 Q75 22 100 12"
+                d="M10 10 Q50 2 90 10"
                 fill="none"
                 stroke="#ec4899"
                 strokeWidth="1"
-                opacity="0.5"
+                opacity="0.4"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ delay: 1.2, duration: 0.8 }}
               />
               <motion.circle 
                 cx="50" 
-                cy="12" 
-                r="4" 
+                cy="8" 
+                r="3" 
                 fill="#c9a050"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.4, type: "spring" }}
-              />
-              {/* Heart shape */}
-              <motion.path
-                d="M25 8 C23 6, 20 6, 20 9 C20 12, 25 15, 25 15 C25 15, 30 12, 30 9 C30 6, 27 6, 25 8"
-                fill="#f472b6"
-                opacity="0.6"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.5 }}
-              />
-              <motion.path
-                d="M75 16 C73 14, 70 14, 70 17 C70 20, 75 23, 75 23 C75 23, 80 20, 80 17 C80 14, 77 14, 75 16"
-                fill="#f472b6"
-                opacity="0.6"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.6 }}
               />
             </svg>
           </motion.div>
