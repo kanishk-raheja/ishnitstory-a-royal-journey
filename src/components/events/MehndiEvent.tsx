@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { MapPin, Calendar, ChevronRight } from "lucide-react";
 import { CornerMandala } from "@/components/CornerMandala";
 import { FloralGarland } from "@/components/FloralGarland";
-import { FestiveCouple } from "@/components/FestiveCouple";
 import { OrnamentalDivider } from "@/components/OrnamentalDivider";
 import { FloatingPetals } from "@/components/FloatingPetals";
 
@@ -125,15 +124,13 @@ export const MehndiEvent = ({ onNext }: MehndiEventProps) => {
             <OrnamentalDivider color="#3b82f6" className="mt-2" />
           </motion.div>
 
-          {/* Festive Couple Illustration */}
+          {/* Event Details */}
           <motion.div
             className="flex-1 flex flex-col items-center justify-center"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <FestiveCouple variant="mehndi" className="w-32 h-36 md:w-40 md:h-44 mb-4" />
-
             {/* Event Details */}
             <div className="text-center px-4">
               <p className="font-display text-2xl md:text-3xl font-semibold text-royal-maroon mb-1">
